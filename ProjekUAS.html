@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hitung Nilai Mahasiswa</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .bg-gradient {
+            background: linear-gradient(90deg, rgba(155,18,229,1) 0%, rgba(10,129,229,1) 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Hitung Nilai Mahasiswa</h2>
+        <form>
+            <div class="form-group">
+                <label for="kehadiran">Nilai Kehadiran:</label>
+                <input type="number" class="form-control" id="kehadiran" name="kehadiran" required>
+            </div>
+            <div class="form-group">
+                <label for="tugas">Nilai Tugas:</label>
+                <input type="number" class="form-control" id="tugas" name="tugas" required>
+            </div>
+            <div class="form-group">
+                <label for="ujian_tengah">Nilai Ujian Tengah Semester:</label>
+                <input type="number" class="form-control" id="ujian_tengah" name="ujian_tengah" required>
+            </div>
+            <div class="form-group">
+                <label for="ujian_akhir">Nilai Ujian Akhir Semester:</label>
+                <input type="number" class="form-control" id="ujian_akhir" name="ujian_akhir" required>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="hitungNilai()">Hitung Nilai</button>
+        </form>
+        <h4 class="text-center mt-5">Hasil Perhitungan</h4>
+        <div class="alert alert-primary mt-3" id="nilai" role="alert">
+        </div>
+    </div>
+
+    <script>
+        function hitungNilai() {
+            let kehadiran = document.getElementById('kehadiran').value;
+            let tugas = document.getElementById('tugas').value;
+            let ujian_tengah = document.getElementById('ujian_tengah').value;
+            let ujian_akhir = document.getElementById('ujian_akhir').value;
+
+            let nilai_kehadiran = parseInt(kehadiran) * 0.1;
+            let nilai_tugas = parseInt(tugas) * 0.2;
+            let nilai_ujian_tengah = parseInt(ujian_tengah) * 0.35;
+            let nilai_ujian_akhir = parseInt(ujian_akhir) * 0.35;
+
+            let nilai_akhir = nilai_kehadiran + nilai_tugas + nilai_ujian_tengah + nilai_ujian_akhir;
+
+            let indeks = '';
+            if (nilai_akhir >= 80) {
+                indeks = 'A';
+            } else if (nilai_akhir >= 70) {
+                indeks = 'B';
+            } else if (nilai_akhir >= 60) {
+                indeks = 'C';
+            } else if (nilai_akhir >= 50) {
+                indeks = 'D';
+            } else {
+                indeks = 'E';
+            }
+
+            document.getElementById('nilai').innerHTML = 'Nilai Akhir: ' + nilai_akhir + ' (' + indeks + ')';
+        }
+    </script>
+
+    <script src="https://ajax.googleapis.com/
